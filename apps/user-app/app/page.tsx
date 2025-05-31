@@ -1,19 +1,15 @@
-import { Button } from "@repo/ui/button";
-import { db } from "@repo/db/client";
-// import { usebalance } from "@repo/store/usebalance";
-
 
 export default function Home() {
   return (<div>
-    <div className="bg-amber-300"> HI there</div>
-
-     </div>
+    Welcome Home!! 
+    </div>
   );
 }
 
 export  function Balance() {
   // const balance = usebalance();
   return <div>
+    Hi there !
     {/* hi there {balance} */}
   </div>
 }
