@@ -1,11 +1,19 @@
 import { Button } from "@repo/ui/button";
-import { PrismaClient } from "@repo/db/client";
+import { db } from "@repo/db/client";
+// import { usebalance } from "@repo/store/usebalance";
 
-const client =new PrismaClient();
+
 export default function Home() {
   return (<div>
     <div className="bg-amber-300"> HI there</div>
-    <Button className={"bg-green-200"} appName={"/Home"}>Submit</Button>
+
      </div>
   );
+}
+
+export  function Balance() {
+  // const balance = usebalance();
+  return <div>
+    {/* hi there {balance} */}
+  </div>
 }
