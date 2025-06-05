@@ -15,6 +15,7 @@
     "@repo/store": "*",
     "@repo/ui": "*",
     "bcrypt": "^6.0.0",
+    "fs": "^0.0.1-security",
     "next": "^15.3.0",
     "next-auth": "^4.24.11",
     "react": "^19.1.0",

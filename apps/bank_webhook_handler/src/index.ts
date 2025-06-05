@@ -1,14 +1,16 @@
+
 import { db } from '@repo/db/client';
 import express from 'express'
 
 // only hdfc banks endpoint talks to this server
 
 const app=express();
+app.use(express.json())
 
 app.post("/hdfcWebhook", async (req, res) => {
     //TODO: Add zod validation here?
     // check if the request actually came out from the hdfc bank, use a webhook secret here
-    const paymentInformation:{token:string;userId:number,amount:number} = {
+    const paymentInformation:{token:string,userId:number,amount:number} = await {
         token: req.body.token,
         userId: req.body.user_identifier,
         amount: req.body.amount
@@ -16,7 +18,7 @@ app.post("/hdfcWebhook", async (req, res) => {
     // Update balance in db, add txn -> all need to be added inside a transaction
     try{
         await db.$transaction([
-            db.balance.update({
+            db.balance.updateMany({
             where:{
                 userId:paymentInformation.userId
             },

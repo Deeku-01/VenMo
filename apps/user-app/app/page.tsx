@@ -1,15 +1,13 @@
+import { getServerSession } from "next-auth";
+import { redirect } from 'next/navigation'
+import { authOptions } from "./lib/auth";
 
-export default function Home() {
-  return (<div>
-    Welcome Home!! 
-    </div>
-  );
-}
-
-export  function Balance() {
-  // const balance = usebalance();
-  return <div>
-    Hi there !
-    {/* hi there {balance} */}
-  </div>
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+  if (session?.user) {
+    redirect('/dashboard')
+  } else {
+    redirect('/api/auth/signin')
+  }
+  
 }
