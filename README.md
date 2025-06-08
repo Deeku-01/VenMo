@@ -27,6 +27,12 @@ This project uses several development tools:
 - [Prettier](https://prettier.io) for code formatting
 - [Turborepo](https://turborepo.org/) for monorepo management
 
+
+# Architechture 
+
+![image](https://github.com/user-attachments/assets/a62680c7-5a0e-4550-9232-acac312f99b0)
+
+
 ## Getting Started
 
 ### Prerequisites
