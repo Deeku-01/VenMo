@@ -10,6 +10,7 @@ app.use(express.json())
 app.post("/hdfcWebhook", async (req, res) => {
     //TODO: Add zod validation here?
     // check if the request actually came out from the hdfc bank, use a webhook secret here
+    // TODO: Check if this onRampTxn is processing or not 
     const paymentInformation:{token:string,userId:number,amount:number} = await {
         token: req.body.token,
         userId: req.body.user_identifier,
@@ -17,6 +18,18 @@ app.post("/hdfcWebhook", async (req, res) => {
     };
     // Update balance in db, add txn -> all need to be added inside a transaction
     try{
+
+        const checkinfo = await db.onRampTransaction.findFirst({
+            where: {
+                token:paymentInformation.token
+            }
+        })
+
+        if(checkinfo?.status!="Processing" && checkinfo?.amount!=paymentInformation.amount){
+            res.status(411).json({
+            message:"Payment already made"
+        })
+        }
         await db.$transaction([
             db.balance.updateMany({
             where:{

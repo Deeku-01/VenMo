@@ -1,84 +1,99 @@
-# Turborepo starter
+# Venmo Client
 
-This Turborepo starter is maintained by the Turborepo core team.
+This is the client-side monorepo for the Venmo application, built using Turborepo.
 
-## Using this example
+## Project Structure
 
-Run the following command:
+This monorepo includes the following packages/apps:
 
-```sh
-npx create-turbo@latest
-```
+### Apps
 
-## What's inside?
+- `user-app`: The main user-facing application built with Next.js
+- `merchant-app`: The merchant dashboard application built with Next.js
 
-This Turborepo includes the following packages/apps:
+### Packages
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@repo/eslint-config`: Shared ESLint configurations
+- `@repo/typescript-config`: Shared TypeScript configurations
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Utilities
 
-This Turborepo has some additional tools already setup for you:
+This project uses several development tools:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
+- [Turborepo](https://turborepo.org/) for monorepo management
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm (v9 or higher)
+
+### Installation
+
+```sh
+# Install dependencies
+npm install
+```
+
+### Development
+
+To start development servers for all apps:
+
+```sh
+npm run dev
+```
+
+To start a specific app:
+
+```sh
+# Start user app
+npm run dev --workspace=user-app
+
+# Start merchant app
+npm run dev --workspace=merchant-app
+```
 
 ### Build
 
-To build all apps and packages, run the following command:
+To build all apps and packages:
 
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
+```sh
+npm run build
 ```
 
-### Remote Caching
+To build a specific app:
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+```sh
+# Build user app
+npm run build --workspace=user-app
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+# Build merchant app
+npm run build --workspace=merchant-app
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## Project Structure
 
 ```
-npx turbo link
+apps/
+  ├── user-app/        # User-facing application
+  └── merchant-app/    # Merchant dashboard application
+packages/
+  ├── eslint-config/   # Shared ESLint configuration
+  └── typescript-config/ # Shared TypeScript configuration
 ```
 
-## Useful Links
+## Contributing
 
-Learn more about the power of Turborepo:
+1. Create a new branch for your feature
+2. Make your changes
+3. Submit a pull request
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+## License
+
+This project is proprietary and confidential.

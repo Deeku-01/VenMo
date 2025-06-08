@@ -5,7 +5,7 @@ import { Center } from "@repo/ui/Centre";
 import { Select } from "@repo/ui/Select";
 import { useState } from "react";
 import { TextInput } from "@repo/ui/TextInput";
-import { createOnRampTransaction } from "./createonramp";
+import { createOnRampTransaction } from "../app/lib/actions/createonramp";
 
 const SUPPORTED_BANKS = [{
     name: "HDFC Bank",

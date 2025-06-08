@@ -1,13 +1,17 @@
 import { db } from "../src"
+import bcrypt from "bcrypt"
 
 
 async function main() {
+    const bobpass = await bcrypt.hash("bob", 10);
+    const alicepass = await bcrypt.hash("alice", 10);
+    
   const alice = await db.user.upsert({
     where: { number: '9999999999' },
-    update: {},
+    update: {password:alicepass},
     create: {
       number: '9999999999',
-      password: 'alice',
+      password: alicepass,
       name: 'alice',
       OnRampTransaction: {
         create: {
@@ -22,10 +26,10 @@ async function main() {
   })
   const bob = await db.user.upsert({
     where: { number: '9999999998' },
-    update: {},
+    update: {password:bobpass},
     create: {
       number: '9999999998',
-      password: 'bob',
+      password: bobpass,
       name: 'bob',
       OnRampTransaction: {
         create: {
